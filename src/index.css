@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+html {
+  background-color: #0a0a0a; /* same as body to avoid mismatched paints */
+}
+
+#root { position: relative; z-index: 1; }
+
+html {
+  /* Smooth scroll */
+  scroll-behavior: smooth !important;
+}
+
+body {
+  /* Dark-only theme, even larger base sizing for closer feel */
+  @apply font-sans bg-neutral-950 text-neutral-100 antialiased text-[18.5px];
+  /* Enforce smooth for programmatic/anchor */
+  scroll-behavior: smooth !important;
+  position: relative; /* allow ::before above background */
+}
+
+/* Apple-like subtle card in dark */
+.card {
+  /* Opaque card to prevent alpha blending artifacts over background */
+  @apply bg-neutral-900 shadow-subtle border border-neutral-800 rounded-2xl;
+}
+
+/* Muted orange for completed */
+.line-through-muted {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: theme('colors.muted.orange');
+}
+
+/* ===== Advanced animated background for premium feel ===== */
+@keyframes bgGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatSoft {
+  0% { transform: translateY(0px) translateX(0px) scale(1); }
+  50% { transform: translateY(-10px) translateX(6px) scale(1.02); }
+  100% { transform: translateY(0px) translateX(0px) scale(1); }
+}
+
+/* Subtle moving gradient on the page background (responsive) */
+body {
+  /* Solid base; gradients handled on html::before */
+  background-color: #0a0a0a;
+}
+
+/* Subtle, seam-proof background accents above base color */
+body::before {
+  content: "";
+  position: fixed;
+  z-index: 0; /* sits above body background, below #root */
+  inset: -60% -60% -60% -60%; /* huge bleed prevents edge seams */
+  background-image:
+    radial-gradient(1200px 900px at 30% 10%, rgba(184,107,43,0.08), transparent 72%),
+    radial-gradient(1400px 1000px at 80% 35%, rgba(245,158,11,0.06), transparent 75%),
+    radial-gradient(1200px 900px at 10% 80%, rgba(249,115,22,0.05), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0) 60%);
+  background-repeat: no-repeat;
+  background-position: 30% 10%, 80% 35%, 10% 80%, 50% 0%;
+  background-size: 1800px 1300px, 2000px 1500px, 1800px 1300px, 100% 100%;
+  pointer-events: none;
+}
+
+/* Soft vignette for depth (very subtle, no seams) */
+body::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  inset: -20% -20% -20% -20%;
+  pointer-events: none;
+  background: radial-gradient(1200px 900px at 50% 70%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.12) 100%);
+}
+
+/* HiDPI and very large screens: increase radiuses subtly for coverage */
+@media (min-width: 1536px) {
+  body {
+    background-size: 200% 200%, max(60vw, 900px) max(50vh, 700px), max(60vw, 800px) max(60vh, 700px);
+  }
+}
+
+/* Reduced motion: keep look but disable heavy animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== Custom Scrollbar ===== */
+/* WebKit-based browsers */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(23, 23, 23, 0.6);
+  border-radius: 9999px;
+}
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(184,107,43,0.65), rgba(245,158,11,0.55));
+  border-radius: 9999px;
+  border: 2px solid rgba(23, 23, 23, 0.8);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(184,107,43,0.85), rgba(245,158,11,0.75));
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(184,107,43,0.7) rgba(23,23,23,0.5);
+}
+
+/* Utility: subtle CTA glow */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(184,107,43,0.0); }
+  50% { box-shadow: 0 0 24px rgba(184,107,43,0.25); }
+}
+.btn-glow {
+  animation: glowPulse 3.2s ease-in-out infinite;
+}
+
+/* ===== Custom input caret (orange, animated) ===== */
+@keyframes caretPulse {
+  0% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(0.6); opacity: 0.8; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+.custom-caret {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5px;
+  /* Orange accent with slight glow */
+  background: var(--muted-orange, #b86b2b);
+  box-shadow: 0 0 6px rgba(184,107,43,0.35);
+  border-radius: 2px;
+  opacity: 1;
+  pointer-events: none;
+  animation: none;
+}
+.custom-caret.typing {
+  animation: caretPulse 0.7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-caret {
+    animation: none;
+  }
+}
