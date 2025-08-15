@@ -777,7 +777,7 @@ export default function App() {
         </p>
         <p className="mt-2 text-center text-sm">
           <a
-            href="https://github.com/oznylmz/simpletodo"
+            href="https://github.com/ozny35/FocusTicks"
             target="_blank"
             rel="noopener noreferrer"
             className="text-neutral-500 hover:text-orange-400 underline transition-colors"
