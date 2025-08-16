@@ -28,7 +28,7 @@
 ---
 
 ## Getting Started
-- Want the desktop app? Download the latest Windows installer: https://github.com/ozny35/FocusTicks/releases/latest
+- Want the desktop app? Download the Windows installer: https://github.com/ozny35/FocusTicks/releases/latest
 - Want to try in the browser? Open the Live Demo: https://ozny35.github.io/FocusTicks/
 
 ---
