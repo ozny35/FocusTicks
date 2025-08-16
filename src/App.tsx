@@ -2,9 +2,10 @@ import { useEffect, useMemo, useState, useRef, useCallback, memo, lazy, Suspense
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence, useDragControls } from 'framer-motion'
 import { FiPlus, FiCheck, FiChevronDown, FiList, FiFolderPlus, FiX, FiPlay, FiPause, FiRotateCcw, FiMenu, FiEdit2, FiSave, FiCalendar, FiFileText } from 'react-icons/fi'
+
 // Lazy-load heavy emoji picker for better initial performance
 const EmojiPickerLazy = lazy(() => import('emoji-picker-react').then(m => ({ default: m.default })))
-import { EmojiStyle, Theme } from 'emoji-picker-react'
+
 import type { EmojiClickData } from 'emoji-picker-react'
 import { Reorder } from 'framer-motion'
 import Modal from './components/Modal'
@@ -836,14 +837,14 @@ export default function App() {
                   </button>
                   {isEmojiPickerOpen && (
                     <div className="absolute z-20 right-0 mt-2">
-                      <Suspense fallback={<div className="p-3 text-sm text-neutral-400">Loading…</div>}>
+                     <Suspense fallback={<div className="p-3 text-sm text-neutral-400">Loading…</div>}>
                         <EmojiPickerLazy
                           onEmojiClick={(emojiData: EmojiClickData) => {
                             setNewCategoryEmoji(emojiData.emoji)
                             setIsEmojiPickerOpen(false)
                           }}
-                          emojiStyle={EmojiStyle.NATIVE}
-                          theme={Theme.DARK}
+                          emojiStyle={"native" as any}
+                          theme={"dark" as any}
                         />
                       </Suspense>
                     </div>
