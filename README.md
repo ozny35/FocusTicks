@@ -1,33 +1,28 @@
+<p align="center">
+  <a href="https://ozny35.github.io/FocusTicks/" target="_blank" rel="noopener">
+    <img src="focusticks_logo.png" alt="FocusTicks Logo" height="96">
+  </a>
+</p>
+
 <h1 align="center">FocusTicks</h1>
 <p align="center">
   Plan tasks, track time, stay focused.
 </p>
 
 <p align="center">
-  <a href="https://ozny35.github.io/FocusTicks/" target="_blank" rel="noopener">
-    <img src="focusticks_logo.png" alt="FocusTicks Logo" height="256">
-  </a>
-</p>
-
-<p align="center">
   <a href="https://ozny35.github.io/FocusTicks/">Live Demo</a> •
   <a href="https://github.com/ozny35/FocusTicks/releases/latest">Download</a> •
   <a href="#getting-started">Getting Started</a> •
-  <a href="#build-from-source">Build</a> •
-  <a href="#development">Development</a> •
-  <a href="#deploy-to-github-pages">Deploy</a>
-</p>
-
-<p align="center">
-  <strong>
-    <a href="https://github.com/ozny35/FocusTicks/releases/latest">⬇️ Download for Windows (.msi)</a>
-  </strong>
+  <a href="#downloads">Downloads</a> •
+  <a href="#install">Install</a> •
+  <a href="#build-from-source">Build</a>
 </p>
 
 ---
 
 ## Getting Started
-- Want the desktop app? Download the Windows installer: https://github.com/ozny35/FocusTicks/releases/latest
+- Want the desktop app? Download the latest Windows installer: https://github.com/ozny35/FocusTicks/releases/latest
+- Want the mobile app? Get the Android APK from Releases (signed): https://github.com/ozny35/FocusTicks/releases/latest
 - Want to try in the browser? Open the Live Demo: https://ozny35.github.io/FocusTicks/
 
 ---
@@ -43,19 +38,33 @@
 - Performance optimizations: debounced storage writes, memoized components, lazy‑loaded Emoji Picker
 - Built with Vite, React, TypeScript, Tailwind, and Framer Motion
 
-## Desktop (Windows) Installer
-- Get the latest .msi from Releases:
-  - https://github.com/ozny35/FocusTicks/releases/latest
-- After installing, Windows SmartScreen may warn for unsigned apps. Click "More info" → "Run anyway".
-
 ## Screenshots
-<img src="focusticks_screenshot.png" alt="FocusTicks screenshot" width="800"> 
+<img src="focusticks_screenshot.png" alt="FocusTicks screenshot" width="800">
 
 ## Tech Stack
 - Vite + React + TypeScript
 - Tailwind CSS
 - Framer Motion
 - emoji-picker-react
+
+## Downloads
+- Windows (.msi): see the latest Release: https://github.com/ozny35/FocusTicks/releases/latest (`FocusTicks_0.1.0_x64_en-US.msi`)
+- Android (APK): see the latest Release: https://github.com/ozny35/FocusTicks/releases/latest (`FocusTicks-android-universal-v0.1.0-signed.apk`)
+
+## System Requirements
+- Windows: 10/11 (64‑bit)
+- Android: 7.0+ (API 24+) recommended
+
+## Install
+- Windows
+  - Download the .msi and run it
+  - SmartScreen may warn for unsigned apps → click "More info" → "Run anyway"
+- Android
+  - Enable "Install unknown apps" on your device
+  - Install the APK directly or via ADB:
+    ```bash
+    adb install -r FocusTicks-android-universal-v0.1.0-signed.apk 
+    ```
 
 ## Build from Source
 ```bash
@@ -76,4 +85,3 @@ npm run tauri dev
 npm run build
 # Windows installer (.msi)
 npm run tauri build
-```
