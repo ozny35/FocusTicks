@@ -1,7 +1,7 @@
 <p align="center">
   <!-- Replace the src below with your actual logo path -->
   <a href="https://ozny35.github.io/FocusTicks/" target="_blank" rel="noopener">
-    <img src="focusticks_logo.png" alt="FocusTicks Logo" height="96">
+    <img src="focusticks_logo.png" alt="FocusTicks Logo" height="256">
   </a>
 </p>
 
