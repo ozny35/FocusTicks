@@ -97,7 +97,11 @@ const TodoItem = memo(({
       style={{ borderColor: todo.color || 'transparent' }}
     >
       <div className="group flex items-start gap-3">
-        <div onPointerDown={e => dragControls.start(e)} className="cursor-grab p-2 pt-1">
+        <div
+          onPointerDown={e => dragControls.start(e)}
+          className="cursor-grab p-2 pt-1"
+          style={{ touchAction: 'none', WebkitUserSelect: 'none', userSelect: 'none' }}
+        >
           <FiMenu className="text-neutral-500" />
         </div>
         <motion.button
@@ -239,6 +243,14 @@ export default function App() {
   const [newCategoryEmoji, setNewCategoryEmoji] = useState('✨')
   const [newCategoryColor, setNewCategoryColor] = useState(COLORS[0])
   const active = useMemo(() => sections.find(s => s.id === activeId) ?? sections[0], [sections, activeId])
+
+  // Ensure modal opens in a consistent state to avoid blank renders
+  useEffect(() => {
+    if (isModalOpen) {
+      setIsCreatingCategory(false)
+      setIsEmojiPickerOpen(false)
+    }
+  }, [isModalOpen])
 
   const groupedSections = useMemo(() => {
     const categorized = sections.filter(s => s.categoryId)
@@ -521,7 +533,7 @@ export default function App() {
     >
       <div className="mx-auto max-w-3xl">
         {/* Header */}
-        <motion.div layout className="mb-8 flex items-center gap-4">
+        <motion.div layout className="mb-8 flex items-center gap-4 flex-col sm:flex-row">
           <div className="flex items-center gap-4">
             <FiList className="text-neutral-300" size={28} />
             <h1 className="text-3xl md:text-4xl font-semibold tracking-tight leading-tight text-neutral-100">FocusTicks</h1>
@@ -529,8 +541,16 @@ export default function App() {
           <motion.button
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.98 }}
-            onClick={() => setIsModalOpen(true)}
-            className="ml-auto inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900 px-5 py-3 text-lg text-neutral-100 shadow-subtle hover:bg-neutral-800 btn-glow"
+            onClick={() => {
+              // Reset defaults and open modal
+              setNewTitle('')
+              setNewColor(COLORS[0])
+              setSelectedCategoryId('')
+              setIsCreatingCategory(false)
+              setIsEmojiPickerOpen(false)
+              setIsModalOpen(true)
+            }}
+            className="sm:ml-auto inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900 px-5 py-3 text-lg text-neutral-100 shadow-subtle hover:bg-neutral-800 btn-glow w-full sm:w-auto mt-2 sm:mt-0"
             title="Add New List"
           >
             <FiFolderPlus /> New List
