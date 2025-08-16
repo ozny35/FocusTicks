@@ -1,13 +1,12 @@
-<p align="center">
-  <!-- Replace the src below with your actual logo path -->
-  <a href="https://ozny35.github.io/FocusTicks/" target="_blank" rel="noopener">
-    <img src="focusticks_logo.png" alt="FocusTicks Logo" height="256">
-  </a>
-</p>
-
 <h1 align="center">FocusTicks</h1>
 <p align="center">
   Plan tasks, track time, stay focused.
+</p>
+
+<p align="center">
+  <a href="https://ozny35.github.io/FocusTicks/" target="_blank" rel="noopener">
+    <img src="focusticks_logo.png" alt="FocusTicks Logo" height="256">
+  </a>
 </p>
 
 <p align="center">
