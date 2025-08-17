@@ -34,26 +34,16 @@
 - Color customization for both lists and individual tasks
 - Notes and due dates on tasks
 - Smooth animations, responsive UI
-- LocalStorage persistence
+- LocalStorage persistence with compression (lz-string)
 - Performance optimizations: debounced storage writes, memoized components, lazy‑loaded Emoji Picker
 - Built with Vite, React, TypeScript, Tailwind, and Framer Motion
 
 ## Screenshots
 <img src="focusticks_screenshot.png" alt="FocusTicks screenshot" width="800">
 
-## Tech Stack
-- Vite + React + TypeScript
-- Tailwind CSS
-- Framer Motion
-- emoji-picker-react
-
 ## Downloads
 - Windows (.msi): see the latest Release: https://github.com/ozny35/FocusTicks/releases/latest (`FocusTicks_0.1.0_x64_en-US.msi`)
 - Android (APK): see the latest Release: https://github.com/ozny35/FocusTicks/releases/latest (`FocusTicks-android-universal-v0.1.0-signed.apk`)
-
-## System Requirements
-- Windows: 10/11 (64‑bit)
-- Android: 7.0+ (API 24+) recommended
 
 ## Install
 - Windows
