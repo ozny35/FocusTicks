@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { useEffect } from 'react'
+import { FiX } from 'react-icons/fi'
 import { AnimatePresence, motion } from 'framer-motion'
 
 interface ModalProps {
@@ -47,9 +48,19 @@ export default function Modal({ open, onClose, children, title }: ModalProps) {
             exit={{ scale: 0.96, opacity: 0, y: 10 }}
             transition={{ type: 'spring', stiffness: 320, damping: 26 }}
           >
-            <div className="w-full max-w-md rounded-2xl border border-neutral-800 bg-neutral-900 p-5 shadow-subtle">
-              {title && (
-                <div className="mb-3 text-lg font-semibold text-neutral-100">{title}</div>
+            <div className="w-full max-w-md rounded-2xl border border-neutral-800 bg-neutral-900 p-5 shadow-subtle relative">
+              {/* Header */}
+              {(title || true) && (
+                <div className="mb-3 flex items-center justify-between">
+                  <div className="text-lg font-semibold text-neutral-100">{title}</div>
+                  <button
+                    aria-label="Close"
+                    onClick={onClose}
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-neutral-700 bg-neutral-800 text-neutral-300 hover:bg-neutral-700 hover:text-neutral-100"
+                  >
+                    <FiX />
+                  </button>
+                </div>
               )}
               {children}
             </div>
