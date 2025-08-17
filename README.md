@@ -37,6 +37,7 @@
 - LocalStorage persistence with compression (lz-string)
 - Performance optimizations: debounced storage writes, memoized components, lazy‑loaded Emoji Picker
 - Built with Vite, React, TypeScript, Tailwind, and Framer Motion
+- Data Management: export/import your lists and categories as JSON for easy backup/restore
 
 ## Screenshots
 <img src="focusticks_screenshot.png" alt="FocusTicks screenshot" width="800">
